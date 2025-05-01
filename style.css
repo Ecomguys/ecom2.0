@@ -53,6 +53,17 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 20px 80px;
-    background: #e3e6;
+    background: rgba(177, 126, 177, 0.4);
     box-shadow:  0 5px 15px rgba(0, 0, 0.06);
+}
+
+#navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#navbar li{
+    list-style: none;
+    padding: 0 20px;
 }
