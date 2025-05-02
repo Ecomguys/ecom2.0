@@ -81,7 +81,8 @@ body {
 #navbar li a.active {
     color: #088178;
 }
-#navbar li a.active::after {
+#navbar li a.active::after,
+#navbar li a:hover::after {
     content: "";
     width: 30%;
     height: 2px;
@@ -89,4 +90,15 @@ body {
     position: absolute;
     bottom: -4px;
     left: 20px;
+}
+
+/* hero page */
+
+#hero {
+    background-image: "";
+    height: 90vh;
+    width: 100%;
+    background-size: cover;
+    background-position:  top 25% right 0;
+    padding: 0 80px;
 }
