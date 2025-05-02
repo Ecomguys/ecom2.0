@@ -99,7 +99,7 @@ body {
 /* hero page */
 
 #hero {
-    background-image: "";
+    background-image: url("img/button.png");
     height: 90vh;
     width: 100%;
     background-size: cover;
@@ -131,6 +131,13 @@ body {
     font-size: 15px;
 }
 
+#feature{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
 #feature .fe-box{
     width: 180px;
     text-align: center;
@@ -145,6 +152,10 @@ body {
     box-shadow: 10px 10px 54px rgba(70, 67, 221, 0.1);
 
 }
+#feature .fe-box img{
+    width: 100%;
+    margin-bottom: 10px;
+}
 
 #feature .fe-box h6{
     display: inline-block;
@@ -153,4 +164,7 @@ body {
     border-radius: 4px;
     color: #088178;
     background-color: #fddde4;
+}
+#feature .fe-box:nth-child(2) h6{
+    background-color: #cdebbc;
 }
