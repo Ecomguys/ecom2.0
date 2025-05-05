@@ -118,6 +118,10 @@ body {
     bottom: -4px;
     left: 20px;
 }
+#mobile {
+    display: none;
+    align-items: center;
+}
 
 /* hero page */
 
