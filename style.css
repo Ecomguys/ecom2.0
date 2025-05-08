@@ -675,6 +675,25 @@ color: #fff;
     height: auto;
 }
 
+#about-head div{
+
+    padding-left: 40px;
+}
+#about-app{
+    text-align: center;
+}
+
+#about-app .video{
+    width: 70%;
+    height: 100;
+    margin: 30px auto 0 auto;
+}
+
+#auto-app .video video{
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
 /* media query */
  
 @media (max-width: 799px) {
@@ -849,5 +868,20 @@ footer .copyright{
 }
 
 #blog .blog-details{
+    width: 100%;
+}
+/*about page*/
+
+#about-head {
+    flex-direction: column;
+}
+#about-head img {
+    width: 100%;
+    margin-bottom: 20px;
+}
+#about-head div{
+    padding-left: 0px;
+}
+#about-app .video{
     width: 100%;
 }
