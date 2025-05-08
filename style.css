@@ -733,7 +733,12 @@ color: #fff;
     margin: 0;
     font-size: 14px;
 }
-#contact-details .mao{
+#contact-details .map{
+    width: 55%;
+    height: 400%;
+}
+
+#contact-details .map iframe {
     width: 100%;
     height: 100%;
 }
