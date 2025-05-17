@@ -21,10 +21,10 @@ const pool = mysql.createPool({
 app.use(cors());
 app.use(express.json());
 
-// 3) Serve your front-end (index.html, style.css, script.js, img/, etc)
+// 3) Serve your front-end (HTML/CSS/JS/imgs)
 app.use('/', express.static(path.join(__dirname, '..')));
 
-// 4) Product routes
+// 4) PRODUCT ROUTES
 app.get('/api/products', async (req, res) => {
   try {
     const [rows] = await pool.query('SELECT * FROM products');
@@ -35,17 +35,13 @@ app.get('/api/products', async (req, res) => {
   }
 });
 
-// GET /api/products/:id → returns one product
 app.get('/api/products/:id', async (req, res) => {
   try {
-    const { id } = req.params;
     const [rows] = await pool.query(
       'SELECT id, name, description, price, image FROM products WHERE id = ?',
-      [id]
+      [req.params.id]
     );
-    if (!rows.length) {
-      return res.status(404).json({ error: 'Not found' });
-    }
+    if (!rows.length) return res.status(404).json({ error: 'Not found' });
     res.json(rows[0]);
   } catch (err) {
     console.error(err);
@@ -67,8 +63,7 @@ app.post('/api/products', async (req, res) => {
   }
 });
 
-// 5) Cart API
-// a) Create a new cart (returns cartId)
+// 5) CART ROUTES
 app.post('/api/cart', async (req, res) => {
   try {
     const [result] = await pool.query(
@@ -81,18 +76,15 @@ app.post('/api/cart', async (req, res) => {
   }
 });
 
-// b) Add or update a cart item
 app.post('/api/cart_items', async (req, res) => {
   try {
     const { cartId, productId, quantity } = req.body;
-    const [productRows] = await pool.query(
+    const [p] = await pool.query(
       'SELECT price FROM products WHERE id = ?',
       [productId]
     );
-    if (productRows.length === 0) {
-      return res.status(404).json({ error: 'Product not found' });
-    }
-    const price = productRows[0].price;
+    if (!p.length) return res.status(404).json({ error: 'Product not found' });
+    const price = p[0].price;
 
     await pool.query(
       `INSERT INTO cart_items (cart_id, product_id, quantity, price)
@@ -108,16 +100,14 @@ app.post('/api/cart_items', async (req, res) => {
   }
 });
 
-// c) List all items in a cart
 app.get('/api/cart_items/:cartId', async (req, res) => {
   try {
-    const { cartId } = req.params;
     const [items] = await pool.query(
       `SELECT ci.id, ci.quantity, ci.price, p.name, p.image
        FROM cart_items ci
        JOIN products p ON p.id = ci.product_id
        WHERE ci.cart_id = ?`,
-      [cartId]
+      [req.params.cartId]
     );
     res.json(items);
   } catch (err) {
@@ -126,14 +116,9 @@ app.get('/api/cart_items/:cartId', async (req, res) => {
   }
 });
 
-// d) Remove a single item from a cart
 app.delete('/api/cart_items/:itemId', async (req, res) => {
   try {
-    const { itemId } = req.params;
-    await pool.query(
-      'DELETE FROM cart_items WHERE id = ?',
-      [itemId]
-    );
+    await pool.query('DELETE FROM cart_items WHERE id = ?', [req.params.itemId]);
     res.json({ success: true });
   } catch (err) {
     console.error(err);
@@ -141,12 +126,65 @@ app.delete('/api/cart_items/:itemId', async (req, res) => {
   }
 });
 
-// 6) Fallback — serve index.html for any non-API route
+// 6) AUTH ROUTES
+
+// a) LOGIN
+app.post('/api/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const [rows] = await pool.query(
+      'SELECT id, username AS name FROM users WHERE email = ? AND password_hash = ?',
+      [email, password]
+    );
+    if (!rows.length) return res.status(401).json({ error: 'Invalid credentials' });
+    res.json({ userId: rows[0].id, name: rows[0].name });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Login failed' });
+  }
+});
+
+// b) WHO AM I?
+app.get('/api/me', async (req, res) => {
+  const id = req.query.id;
+  if (!id) return res.status(401).json({ error: 'Not logged in' });
+  try {
+    const [rows] = await pool.query(
+      'SELECT id, username AS name, email FROM users WHERE id = ?',
+      [id]
+    );
+    if (!rows.length) return res.status(404).json({ error: 'User not found' });
+    res.json(rows[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Could not fetch user' });
+  }
+});
+
+// c) REGISTER
+app.post('/api/register', async (req, res) => {
+  try {
+    const { username, email, password } = req.body;
+    const [result] = await pool.query(
+      'INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)',
+      [username, email, password]
+    );
+    res.status(201).json({ userId: result.insertId });
+  } catch (err) {
+    console.error(err);
+    if (err.code === 'ER_DUP_ENTRY') {
+      return res.status(409).json({ error: 'Username or email already in use' });
+    }
+    res.status(500).json({ error: 'Registration failed' });
+  }
+});
+
+// 7) FALLBACK — serve index.html for any non-API route
 app.get(/^(?!\/api).*/, (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
 
-// 7) Start
+// 8) START SERVER
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server + frontend listening on http://localhost:${port}`);

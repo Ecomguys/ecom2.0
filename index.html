@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,6 +16,7 @@
   </head>
 
   <body>
+    <!-- HEADER -->
     <section id="header">
       <a href="#"><img src="img/logo.png" class="logo logos" alt="" /></a>
       <div>
@@ -23,8 +24,9 @@
           <li><a class="active" href="index.html">Home</a></li>
           <li><a href="shop.html">Shop</a></li>
           <li><a href="blog.html">Blog</a></li>
-
           <li><a href="contact.html">Contact</a></li>
+          <!-- Sign In / User Link -->
+          <li><a href="login.html" id="user-link">Sign In</a></li>
           <li id="lg-bag">
             <a href="cart.html"><i class="far fa-shopping-bag"></i></a>
           </li>
@@ -42,7 +44,7 @@
       <h2>Super value deals</h2>
       <h1>On all products</h1>
       <p>Save more with coupons & up to 70% off!</p>
-      <button>Shop Now</button>
+      <button onclick="window.location.href='shop.html'">Shop Now</button>
     </section>
 
     <section id="feature" class="section-p1">
@@ -379,7 +381,7 @@
 
     <footer class="section-p1">
       <div class="col">
-        <img class="logo" src="img/logo.png" alt="" />
+        <img class="logo logos" src="img/logo.png" alt="" />
         <h4>Contact</h4>
         <p><strong>Address: </strong> 10 Downing street NN27EW London</p>
         <p><strong>Phone:</strong> 0160463937494</p>
@@ -428,12 +430,54 @@
 
     <script src="script.js"></script>
     <script>
+      document.addEventListener('DOMContentLoaded', async () => {
+        const userLink = document.getElementById('user-link');
+        const userId   = localStorage.getItem('userId');
+        if (!userLink) return;
+
+        if (userId) {
+          // verify on the server
+          const res = await fetch(`/api/me?id=${userId}`);
+          if (res.ok) {
+            const { name } = await res.json();
+            userLink.textContent = `Hi, ${name}`;
+            userLink.href = '#';  // disable navigation
+            userLink.addEventListener('click', e => {
+              e.preventDefault();
+              localStorage.removeItem('userId');
+              window.location.reload();
+            });
+          } else {
+            // invalid token → clear
+            localStorage.removeItem('userId');
+          }
+        }
+      });
+    </script>
+    <script>
   document.querySelectorAll('.pro').forEach(card => {
     card.style.cursor = 'pointer';
     card.addEventListener('click', () => {
       window.location.href = 'shop.html';
     });
   });
+  //
+// script.js
+document.addEventListener('DOMContentLoaded', () => {
+  const userLink = document.getElementById('user-link');
+  const name    = localStorage.getItem('userName');
+  if (userLink && name) {
+    userLink.textContent = `Hi, ${name}`;
+    userLink.href = '#';
+    userLink.addEventListener('click', () => {
+      localStorage.removeItem('userId');
+      localStorage.removeItem('userName');
+      window.location.reload();
+    });
+  }
+});
+
+
 </script>
 
   </body>

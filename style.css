@@ -1109,3 +1109,111 @@ cart-add {
     pad: 20px;
   }
 }
+
+/* LOGING PAGE*/
+/* style.css */
+
+/* full-screen login background */
+.login-bg {
+  margin: 0;
+  font-family: sans-serif;
+  background: url("img/water.avif") no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* the white “card” in the middle */
+.login-container {
+  background: rgba(255,255,255,0.85);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  width: 320px;
+  text-align: center;
+}
+
+.login-container h2 {
+  margin-bottom: 1rem;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-container button {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  border: none;
+  background: #333;
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login-container button:hover {
+  background: #555;
+}
+
+.login-container .register-link {
+  display: block;
+  margin-top: 1rem;
+  color: #333;
+  text-decoration: none;
+}
+
+.login-container .register-link:hover {
+  text-decoration: underline;
+}
+
+/* REGISTER PAGE */
+/* same form‐box styling as login */
+.auth-form {
+  max-width: 360px;
+  margin: 5vh auto;
+  padding: 2rem;
+  background: rgba(255,255,255,0.9);
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* login page used water.avif */
+.login-bg {
+  background: url('img/water.avif') no-repeat center/cover;
+  min-height: 100vh;
+}
+
+/* register page uses night.avif */
+.register-bg {
+  background: url('img/night.avif') no-repeat center/cover;
+  min-height: 100vh;
+}
+
+/* keep inputs/buttons the same as login */
+.auth-form input,
+.auth-form button {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.auth-form button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.auth-form button:hover {
+  background: #0056b3;
+}
+
