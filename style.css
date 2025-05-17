@@ -1171,19 +1171,19 @@ cart-add {
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-/* login page used water.avif */
+
 .login-bg {
   background: url('img/water.avif') no-repeat center/cover;
   min-height: 100vh;
 }
 
-/* register page uses night.avif */
+
 .register-bg {
   background: url('img/night.avif') no-repeat center/cover;
   min-height: 100vh;
 }
 
-/* keep inputs/buttons the same as login */
+
 .auth-form input,
 .auth-form button {
   width: 100%;
@@ -1200,5 +1200,28 @@ cart-add {
 }
 .auth-form button:hover {
   background: #0056b3;
+}
+
+/* PRODUCT PAGE */ 
+/* toast notification */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-size: 14px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
