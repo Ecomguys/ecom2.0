@@ -454,7 +454,9 @@ footer .col {
   align-items: flex-start;
   margin-bottom: 20px;
 }
-
+.logos{
+  height: 45px;
+}
 footer .logo {
   margin-bottom: 30px;
 }
@@ -500,7 +502,7 @@ footer .copyright {
 /* shop page */
 
 #page-header {
-  background-image: "";
+  background-image: url("img/summer.avif");
   width: 100%;
   height: 40vh;
   background-size: cover;
@@ -651,7 +653,7 @@ footer .copyright {
 
 /* about page */
 #page-header.about-header {
-  background-image: url("img/o1.jpg");
+  background-image: url("img/contact.avif");
 }
 #about-head {
   display: flex;

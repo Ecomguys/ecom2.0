@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop</title>
+
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <section id="header">
+      <a href="#"><img src="img/logo.png" class="logo logos" alt="" /></a>
+      <div>
+        <ul id="navbar">
+          <li><a href="index.html">Home</a></li>
+          <li><a class="active" href="shop.html">Shop</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li id="lg-bag">
+            <a href="cart.html"><i class="far fa-shopping-bag"></i></a>
+          </li>
+          <a id="close" href="#"><i class="far fa-times"></i></a>
+        </ul>
+      </div>
+      <div id="mobile">
+        <a href="cart.html"><i class="far fa-shopping-bag"></i></a>
+        <i id="bar" class="fas fa-outdent"></i>
+      </div>
+    </section>
+
+
+    <section id="prodetails" class="section-p1">
+      <div class="single-pro-image">
+        <img id="MainImg" src="" alt="Product Image" />
+        <div class="small-img-group" id="thumbs"></div>
+      </div>
+
+      <div class="single-pro-details">
+        <h6 id="breadcrumb">Home / <span id="category"></span></h6>
+        <h4 id="product-name"></h4>
+        <h2 id="product-price"></h2>
+
+        <select id="size-select">
+          <option>Select Size</option>
+          <option>S</option>
+          <option>M</option>
+          <option>L</option>
+          <option>XL</option>
+          <option>XXL</option>
+        </select>
+        <input type="number" value="1" id="qty-input" min="1" />
+
+        <button class="normal" id="add-to-cart">
+          Add To Cart
+        </button>
+
+        <h4>Product Details</h4>
+        <span id="product-desc"></span>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', async () => {
+        const API_URL = location.origin;
+        // 1) Read ?id= from URL
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+        if (!id) {
+          alert('No product specified');
+          window.location = 'shop.html';
+          return;
+        }
+
+        // 2) Fetch product data
+        const res = await fetch(`${API_URL}/api/products/${id}`);
+        if (!res.ok) {
+          alert('Product not found');
+          window.location = 'shop.html';
+          return;
+        }
+        const product = await res.json();
+
+        // 3) **Set main image src here**:
+        document.getElementById('MainImg').src = product.image;
+
+        // 4) Populate the rest of the fields
+        document.getElementById('product-name').textContent = product.name;
+        document.getElementById('product-price').textContent =
+          `£${parseFloat(product.price).toFixed(2)}`;
+        document.getElementById('product-desc').textContent =
+          product.description;
+        // If you don’t have a `brand` column, you can comment this out:
+        // document.getElementById('category').textContent = product.brand;
+        document
+          .getElementById('add-to-cart')
+          .dataset.productId = product.id;
+
+        // 5) Thumbnails
+        const thumbs = document.getElementById('thumbs');
+        (product.images || [product.image]).forEach(src => {
+          const img = document.createElement('img');
+          img.src = src;
+          img.classList.add('small-img');
+          img.addEventListener('click', () => {
+            document.getElementById('MainImg').src = src;
+          });
+          thumbs.appendChild(img);
+        });
+
+        // 6) Add-to-cart logic
+        document.getElementById('add-to-cart').addEventListener(
+          'click',
+          async () => {
+            const qty =
+              parseInt(
+                document.getElementById('qty-input').value,
+                10
+              ) || 1;
+            let cartId = localStorage.getItem('cartId');
+            if (!cartId) {
+              const c = await fetch(`${API_URL}/api/cart`, {
+                method: 'POST'
+              });
+              const { cartId: newId } = await c.json();
+              cartId = newId;
+              localStorage.setItem('cartId', cartId);
+            }
+            await fetch(`${API_URL}/api/cart_items`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                cartId,
+                productId: product.id,
+                quantity: qty
+              })
+            });
+            alert('Added to cart!');
+          }
+        );
+      });
+    </script>
+  </body>
+</html>

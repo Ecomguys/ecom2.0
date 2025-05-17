@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      
+      .checkout-container { max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px; }
+      .checkout-container h2 { text-align: center; margin-bottom: 20px; }
+      .form-group { margin-bottom: 15px; }
+      .form-group label { display: block; margin-bottom: 5px; }
+      .form-group input { width: 100%; padding: 8px; box-sizing: border-box; }
+      .btn { width: 100%; padding: 10px; background: #333; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+      .success-message { text-align: center; margin-top: 20px; display: none; }
+    </style>
+  </head>
+  <body>
+    <div class="checkout-container">
+      <h2>Please Enter Details</h2>
+      <form id="payment-form">
+        <div class="form-group">
+          <label for="name">Name on Card</label>
+          <input type="text" id="name" placeholder="John Doe" required />
+        </div>
+        <div class="form-group">
+          <label for="card-number">Card Number</label>
+          <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required />
+        </div>
+        <div class="form-group">
+          <label for="expiry">Expiry Date</label>
+          <input type="text" id="expiry" placeholder="MM/YY" required />
+        </div>
+        <div class="form-group">
+          <label for="cvv">CVV</label>
+          <input type="password" id="cvv" placeholder="123" required />
+        </div>
+        <button type="submit" class="btn">Pay Now</button>
+      </form>
+      <div class="success-message" id="success-message">
+        <h3>Payment Successful!</h3>
+        <p>Thank you for your purchase.</p>
+        <button class="btn" id="back-home">Back to Home</button>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById('payment-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Simulate processing delay
+        setTimeout(() => {
+          document.getElementById('payment-form').style.display = 'none';
+          document.getElementById('success-message').style.display = 'block';
+        }, 1000);
+      });
+
+      document.getElementById('back-home').addEventListener('click', () => {
+        window.location.href = 'index.html';
+      });
+    </script>
+  </body>
+</html>
