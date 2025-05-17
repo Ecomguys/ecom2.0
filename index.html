@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,15 +16,17 @@
   </head>
 
   <body>
+    <!-- HEADER -->
     <section id="header">
-      <a href="#"><img src="img/logo.png" class="logo" alt="" /></a>
+      <a href="#"><img src="img/logo.png" class="logo logos" alt="" /></a>
       <div>
         <ul id="navbar">
           <li><a class="active" href="index.html">Home</a></li>
           <li><a href="shop.html">Shop</a></li>
           <li><a href="blog.html">Blog</a></li>
-
           <li><a href="contact.html">Contact</a></li>
+          <!-- Sign In / User Link -->
+          <li><a href="login.html" id="user-link">Sign In</a></li>
           <li id="lg-bag">
             <a href="cart.html"><i class="far fa-shopping-bag"></i></a>
           </li>
@@ -42,7 +44,7 @@
       <h2>Super value deals</h2>
       <h1>On all products</h1>
       <p>Save more with coupons & up to 70% off!</p>
-      <button>Shop Now</button>
+      <button onclick="window.location.href='shop.html'">Shop Now</button>
     </section>
 
     <section id="feature" class="section-p1">
@@ -73,139 +75,124 @@
     </section>
 
     <section id="product1" class="section-p1">
-      <h2>Featured Products</h2>
-      <p>Summer Collection New Morden Design</p>
-      <div class="pro-container">
-        <div class="pro">
-          <img src="img/s1.webp" alt="" />
-          <div class="des">
-            <span>adidas</span>
-            <h5>Cartoon Astronaut T-Shirts</h5>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h4>£78</h4>
-          </div>
-          <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+  <h2>Featured Products</h2>
+  <p>Summer Collection New Modern Design</p>
+  <div class="pro-container">
+    <div class="pro">
+      <img src="img/s1.webp" alt="" />
+      <div class="des">
+        <span>Gucci</span>
+        <h5>Solar Yellow Tee</h5>
+        <div class="star">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
         </div>
-        <div class="pro">
-          <img src="img/s2.webp" alt="" />
-          <div class="des">
-            <span>adidas</span>
-            <h5>Cartoon Astronaut T-Shirts</h5>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h4>£78</h4>
-          </div>
-          <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-        </div>
-        <div class="pro">
-          <img src="img/s3.webp" alt="" />
-          <div class="des">
-            <span>adidas</span>
-            <h5>Cartoon Astronaut T-Shirts</h5>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h4>£78</h4>
-          </div>
-          <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-        </div>
-        <div class="pro">
-          <img src="img/s4.webp" alt="" />
-          <div class="des">
-            <span>adidas</span>
-            <h5>Cartoon Astronaut T-Shirts</h5>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h4>£78</h4>
-          </div>
-          <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-        </div>
-        <div class="pro">
-          <img src="img/s5.jpg" alt="" />
-          <div class="des">
-            <span>adidas</span>
-            <h5>Cartoon Astronaut T-Shirts</h5>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h4>$78</h4>
-          </div>
-          <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-        </div>
-        <div class="pro">
-          <img src="img/s6.webp" alt="" />
-          <div class="des">
-            <span>adidas</span>
-            <h5>Cartoon Astronaut T-Shirts</h5>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h4>$78</h4>
-          </div>
-          <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-        </div>
-        <div class="pro">
-          <img src="img/s7.webp" alt="" />
-          <div class="des">
-            <span>adidas</span>
-            <h5>Cartoon Astronaut T-Shirts</h5>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h4>$78</h4>
-          </div>
-          <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-        </div>
-        <div class="pro">
-          <img src="img/s8.webp" alt="" />
-          <div class="des">
-            <span>adidas</span>
-            <h5>Cartoon Astronaut T-Shirts</h5>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h4>£78</h4>
-          </div>
-          <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-        </div>
+        <h4>£78</h4>
       </div>
-    </section>
+      <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+    </div>
+    <div class="pro">
+      <img src="img/s2.webp" alt="" />
+      <div class="des">
+        <span>Louis Vuitton</span>
+        <h5>Nebula Black Tee</h5>
+        <div class="star">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>£120</h4>
+      </div>
+      <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+    </div>
+    <div class="pro">
+      <img src="img/s3.webp" alt="" />
+      <div class="des">
+        <span>D&amp;G</span>
+        <h5>Galaxy Blue Tee</h5>
+        <div class="star">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>£85</h4>
+      </div>
+      <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+    </div>
+    <div class="pro">
+      <img src="img/s4.webp" alt="" />
+      <div class="des">
+        <span>Versace</span>
+        <h5>Cosmic Coral Tee</h5>
+        <div class="star">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>£95</h4>
+      </div>
+      <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+    </div>
+    <div class="pro">
+      <img src="img/s5.jpg" alt="" />
+      <div class="des">
+        <span>Prada</span>
+        <h5>Orbit Orange Tee</h5>
+        <div class="star">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>£110</h4>
+      </div>
+      <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+    </div>
+    <div class="pro">
+      <img src="img/s6.webp" alt="" />
+      <div class="des">
+        <span>Balenciaga</span>
+        <h5>Stellar Silver Tee</h5>
+        <div class="star">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>£99</h4>
+      </div>
+      <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+    </div>
+    <div class="pro">
+      <img src="img/s7.webp" alt="" />
+      <div class="des">
+        <span>Fendi</span>
+        <h5>Planetary Purple Tee</h5>
+        <div class="star">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>£105</h4>
+      </div>
+      <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+    </div>
+    <div class="pro">
+      <img src="img/s8.webp" alt="" />
+      <div class="des">
+        <span>Givenchy</span>
+        <h5>Lunar Lime Tee</h5>
+        <div class="star">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>£115</h4>
+      </div>
+      <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+    </div>
+  </div>
+</section>
+
 
     <section id="banner" class="section-m1">
       <h4>Repair Services</h4>
@@ -353,13 +340,13 @@
         <h4>crazy deals</h4>
         <h2>buy 1 get 1 free</h2>
         <span>The best classic dress is on sale at cara</span>
-        <button class="white">Learn More</button>
+        
       </div>
       <div class="banner-box banner-box2">
         <h4>spring/summer</h4>
         <h2>upcomming season</h2>
         <span>The best classic dress is on sale at cara</span>
-        <button class="white">Collection</button>
+        <button class="white" onclick="window.location='shop.html'">Collection</button>
       </div>
     </section>
 
@@ -394,7 +381,7 @@
 
     <footer class="section-p1">
       <div class="col">
-        <img class="logo" src="img/logo.png" alt="" />
+        <img class="logo logos" src="img/logo.png" alt="" />
         <h4>Contact</h4>
         <p><strong>Address: </strong> 10 Downing street NN27EW London</p>
         <p><strong>Phone:</strong> 0160463937494</p>
@@ -442,5 +429,56 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', async () => {
+        const userLink = document.getElementById('user-link');
+        const userId   = localStorage.getItem('userId');
+        if (!userLink) return;
+
+        if (userId) {
+          // verify on the server
+          const res = await fetch(`/api/me?id=${userId}`);
+          if (res.ok) {
+            const { name } = await res.json();
+            userLink.textContent = `Hi, ${name}`;
+            userLink.href = '#';  // disable navigation
+            userLink.addEventListener('click', e => {
+              e.preventDefault();
+              localStorage.removeItem('userId');
+              window.location.reload();
+            });
+          } else {
+            // invalid token → clear
+            localStorage.removeItem('userId');
+          }
+        }
+      });
+    </script>
+    <script>
+  document.querySelectorAll('.pro').forEach(card => {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', () => {
+      window.location.href = 'shop.html';
+    });
+  });
+  //
+// script.js
+document.addEventListener('DOMContentLoaded', () => {
+  const userLink = document.getElementById('user-link');
+  const name    = localStorage.getItem('userName');
+  if (userLink && name) {
+    userLink.textContent = `Hi, ${name}`;
+    userLink.href = '#';
+    userLink.addEventListener('click', () => {
+      localStorage.removeItem('userId');
+      localStorage.removeItem('userName');
+      window.location.reload();
+    });
+  }
+});
+
+
+</script>
+
   </body>
 </html>
